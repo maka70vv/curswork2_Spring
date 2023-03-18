@@ -6,7 +6,11 @@
 <!-- Navbar -->
 <div th:insert="blocks/navbar :: navbar"></div>
 <br>
-
+<div th:each="elements: ${posts}">
+    <h3 th:text="${elements.title}"></h3>
+    <p th:text="${elements.anons}"/>
+    <a th:href="'/posts/' + ${elements.id}">More</a>
+</div>
 <!-- Footer -->
 <div th:insert="blocks/footer :: footer"></div>
 
