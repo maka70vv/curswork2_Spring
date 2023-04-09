@@ -14,7 +14,7 @@ public class ForumController {
     private PostRepository postRepository;
 
     @GetMapping("/forum")
-    public String index(Model model) {
+    public String post(Model model) {
         Iterable<Post> posts = postRepository.findAll();
         model.addAttribute("posts", posts);
         return "forum";
