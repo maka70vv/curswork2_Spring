@@ -14,8 +14,10 @@
         <img th:src="@{/img/img1.jpg}" style="width:100%">
         <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
             <div class="square" th:each="home: ${home}">
-                <h3 th:text="${home.title}"></h3>
-                <p><b th:text="${home.text}"></b></p>
+                <span th:if="${home.id == 1}">
+                    <h3 th:text="${home.title}"></h3>
+                    <p><b th:text="${home.text}"></b></p>
+                </span>
             </div>
         </div>
     </div>
@@ -23,8 +25,10 @@
         <img th:src="@{/img/img2.jpg}" style="width:100%">
         <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
             <div class="square" th:each="home: ${home}">
-                <h3 th:text="${home.title}"></h3>
-                <p><b th:text="${home.text}"></b></p>
+                <span th:if="${home.id == 2}">
+                    <h3 th:text="${home.title}"></h3>
+                    <p><b th:text="${home.text}"></b></p>
+                </span>
             </div>
         </div>
     </div>
@@ -32,8 +36,10 @@
         <img th:src="@{/img/img3.jpg}" style="width:100%">
         <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
             <div class="square" th:each="home: ${home}">
-                <h3 th:text="${home.title}"></h3>
-                <p><b th:text="${home.text}"></b></p>
+                <span th:if="${home.id == 3}">
+                    <h3 th:text="${home.title}"></h3>
+                    <p><b th:text="${home.text}"></b></p>
+                </span>
             </div>
         </div>
     </div>

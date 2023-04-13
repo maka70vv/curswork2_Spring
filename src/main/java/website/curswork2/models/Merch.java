@@ -1,50 +1,44 @@
 package website.curswork2.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Merch {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
+    @Column(name = "title")
+    private String title;
+    @Column(name = "description", columnDefinition = "text")
+    private String description;
+    @Column(name = "cost")
+    private int cost;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,
+            mappedBy = "merch")
+    private List<Image> images = new ArrayList<>();
+    private Long previewImageId;
+    private LocalDateTime dateOfCreated;
 
-    private String title, fullText;
-    private int views;
 
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
+    @PrePersist
+    private void init() {
+        dateOfCreated = LocalDateTime.now();
     }
 
 
-    public String getFullText() {
-        return fullText;
-    }
-
-    public void setFullText(String fullText) {
-        this.fullText = fullText;
-    }
-
-    public int getViews() {
-        return views;
-    }
-
-    public void setViews(int views) {
-        this.views = views;
+    public void addImageToProduct(Image image) {
+        image.setMerch(this);
+        images.add(image);
     }
 }

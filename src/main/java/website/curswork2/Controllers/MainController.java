@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import website.curswork2.models.Home;
 import website.curswork2.repositories.HomeRepository;
 
@@ -20,9 +22,4 @@ public class MainController {
         model.addAttribute("home", home);
         return "index";
     }
-    @GetMapping("/edit")
-    public String homeEdit(Model model) {
-        return "edit";
-    }
-
 }

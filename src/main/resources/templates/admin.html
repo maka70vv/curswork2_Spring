@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="blocks/head :: head"></head>
+<body>
+
+<!-- Navbar -->
+<div th:insert="blocks/navbar :: navbar"></div>
+<br>
+<h1>Admin Panel</h1>
+<table border="1">
+  <tr>
+    <th>Email</th>
+    <th>Активность</th>
+    <th>Роли</th>
+    <th>Бан</th>
+    <th>Редактирование</th>
+    <th>Подробная информация</th>
+  </tr>
+  <tr th:each="u: ${users}">
+    <th th:text="${u.email}"></th>
+    <th th:if="u.active == true">true</th>
+    <th th:if="u.active == false">false</th>
+    <th th:list="u.roles"></th>
+    <th>
+      <form th:action="'/admin/user/ban/' + ${u.id}" method="post">
+        <input type="submit" value="Бан">
+      </form>
+    </th>
+    <th><a th:href="'/admin/user/edit/' + ${u.id}">Редактировние</a></th>
+    <th><a th:href="'/user/' + ${u.id}">Подробная информация</a></th>
+  </tr>
+
+    <button type="submit">Save</button>
+  </form>
+  <div th:each="admin: ${admin}">
+    <p></p>
+  </div>
+<!--  <#else>-->
+<!--  <h3>Пользователей нет</h3>-->
+<!--</#list>-->
+</table>
+<!-- Footer -->
+<div th:insert="blocks/footer :: footer"></div>
+
+</body>
+</html>
