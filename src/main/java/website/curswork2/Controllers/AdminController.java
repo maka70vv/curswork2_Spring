@@ -11,6 +11,7 @@ import website.curswork2.models.Role;
 import website.curswork2.models.User;
 import website.curswork2.services.UserService;
 
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -20,27 +21,21 @@ public class AdminController {
 
     @GetMapping("/admin")
     public String admin(Model model){
-        model.addAttribute("users", userService.list());
+        List<User> listUsers = userService.listAll();
+        model.addAttribute("listUsers", listUsers);
         return "admin";
     }
-
-
-    @PostMapping("/admin/user/ban/{id}")
-    public String userBan(@PathVariable("id") Long id) {
-        userService.banUser(id);
-        return "redirect:/admin";
-    }
-
-    @GetMapping("/admin/user/edit/{user}")
-    public String userEdit(@PathVariable("user") User user, Model model) {
+    @GetMapping("/admin/user/edit/{id}")
+    public String userEdit(@PathVariable("id") User user, Model model) {
         model.addAttribute("user", user);
         model.addAttribute("roles", Role.values());
         return "user-edit";
     }
 
-    @PostMapping("/admin")
+    @PostMapping("/admin/user/edit")
     public String userEdit(@RequestParam("userId") User user, @RequestParam Map<String, String> form) {
         userService.changeUserRoles(user, form);
         return "redirect:/admin";
     }
+
 }

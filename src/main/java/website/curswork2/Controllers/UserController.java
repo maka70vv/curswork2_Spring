@@ -7,9 +7,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import website.curswork2.models.Role;
 import website.curswork2.models.User;
 import website.curswork2.repositories.UserRepository;
 import website.curswork2.services.UserService;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -33,7 +36,7 @@ public class UserController {
     @PostMapping("/registration")
     public String createUser(User user, Model model) {
         userService.createUser(user);
-        if (!userService.createUser(user)){
+        if (!userService.createUser(user)) {
             model.addAttribute("errorMessage", "User with email " + user.getEmail() + " is existed");
             return "registration";
         }
@@ -41,8 +44,8 @@ public class UserController {
     }
 
     @GetMapping("/user")
-    public String userList(Model model){
-        model.addAttribute("users", userRepository.findAll());
+    public String userList(Model model) {
+        model.addAttribute("user", userRepository.findAll());
         return "userList";
     }
 
@@ -52,4 +55,6 @@ public class UserController {
 //        model.addAttribute("posts", user.getPost());
         return "user-info";
     }
+
+
 }
