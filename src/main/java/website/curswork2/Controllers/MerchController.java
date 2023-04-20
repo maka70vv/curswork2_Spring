@@ -35,7 +35,7 @@ public class MerchController {
     public String productInfo(@PathVariable Long id, Model model) {
         Merch product = merchService.getProductById(id);
         model.addAttribute("product", product);
-        model.addAttribute("images", product.getImages());
+//        model.addAttribute("images", product.getImages());
         return "merch-info";
     }
 

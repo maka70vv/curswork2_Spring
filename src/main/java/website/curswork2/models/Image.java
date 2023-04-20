@@ -32,6 +32,9 @@ public class Image {
     }
 
     @ManyToOne (cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    private Post post;
+
+    @ManyToOne (cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private Merch merch;
 
 }

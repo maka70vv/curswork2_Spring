@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="blocks/head :: head"></head>
+<body>
+
+<!-- Navbar -->
+<div th:insert="blocks/navbar :: navbar"></div>
+<br>
+<div class="container" th:each="p: ${post}">
+    <div class="post">
+        <div class="post-image">
+            <img th:src="'/images/' + ${p.getPreviewImageId()}">
+        </div>
+        <div class="post-content">
+            <div class="post-header">
+                <h1 th:text="${p.title}"></h1>
+                <div class="post-meta">
+                    <time th:text="${p.dateOfCreated}"></time>
+                    <span class="author" th:text="${p.user.username}"></span>
+                </div>
+            </div>
+            <p th:text="${p.full_text}">
+            </p>
+        </div>
+    </div>
+</div>
+<h2 class="w3-wide w3-center">COMMENTS</h2>
+<div >
+    <form th:object="${post}" th:action="'/forum/post/' + ${post.id} + '/comment'" method="post" enctype="multipart/form-data">
+        <div class="w3-row-padding" style="margin-left: 15%; width: 70%">
+            <input class="w3-input w3-border" type="text" placeholder="Text" required name="text">
+            <button class="w3-button w3-black w3-section w3-right" type="submit">ADD COMMENT</button>
+        </div>
+    </form>
+</div>
+
+<div class="comments" th:each="c: ${comment}">
+    <hr>
+    <div class="comment dialog">
+        <p th:text="${c.user.name}"></p>
+        <p th:text="${c.dateOfCreated}"></p>
+        <p th:text="${c.text}"></p>
+    </div>
+</div>
+
+</body>
+</html>

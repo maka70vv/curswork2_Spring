@@ -1,31 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head th:insert="blocks/head :: head"></head>
 <body>
 
 <!-- Navbar -->
 <div th:insert="blocks/navbar :: navbar"></div>
 <br>
-<h1>Admin Panel</h1>
-<form th:action="@{/admin/user/edit}" th:object="${user}"
-      method="post" style="max-width: 600px; margin: 0 auto;">
-    <div class="form-group row">
-      <label class="col-4 col-form-label">Roles: </label>
-      <div class="col-8">
-        <th:block th:each="role: ${roles}">
-          <input type="checkbox" th:name="${role}" th:text="${role.name}"/>
-        </th:block>
-          <input type="hidden" th:value="${user.id}" name="userId"/>
-      </div>
-    </div>
+<div class="w3-container w3-content w3-center w3-padding-64">
+    <h1 class="w3-wide w3-center">Admin Panel</h1>
+    <form th:action="@{/admin/user/edit}" th:object="${user}"
+          method="post" style="max-width: 600px; margin: 0 auto;">
+        <div class="form-group row">
+          <label class="col-4 col-form-label">Roles: </label>
+          <div class="col-8">
+            <th:block th:each="role: ${roles}">
+              <input type="checkbox" th:name="${role}" th:text="${role.name}"/>
+            </th:block>
+              <input type="hidden" th:value="${user.id}" name="userId"/>
+          </div>
+        </div>
 
-    <div>
-      <button type="submit" class="btn btn-primary">Update</button>
-    </div>
-  </div>
-</form>
-<!-- Footer -->
-<div th:insert="blocks/footer :: footer"></div>
-
+        <div>
+          <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+    </form>
+</div>
 </body>
 </html>

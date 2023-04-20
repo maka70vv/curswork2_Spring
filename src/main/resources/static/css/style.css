@@ -10,6 +10,520 @@ html {
     box-sizing: inherit
 }
 
+.card{display: inline-block;}
+
+
+/*Comments*/
+.comments {
+    width: 400px;
+}
+
+.comment {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.comment p {
+    margin: 0 0 10px 0;
+}
+
+.dialog {
+    position: relative;
+    background: #fff;
+    padding: 20px;
+    color: #222;
+    border-radius: 3px;
+    margin-left: 20px;
+}
+
+.dialog::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 15px solid #fff;
+    left: -15px;
+    top: 15px;
+}
+
+.example-2 .btn-tertiary{color:#555;padding:0;line-height:40px;width:300px;margin:auto;display:block;border:2px solid #555}
+.example-2 .btn-tertiary:hover,.example-2 .btn-tertiary:focus{color:#888;border-color:#888}
+.example-2 .input-file{width:.1px;height:.1px;opacity:0;overflow:hidden;position:absolute;z-index:-1}
+.example-2 .input-file + .js-labelFile{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 10px;cursor:pointer}
+.example-2 .input-file + .js-labelFile .icon:before{content:"\f093"}
+.example-2 .input-file + .js-labelFile.has-file .icon:before{content:"\f00c";color:#5AAC7B}
+
+@media (min-width: 768px) {
+    .container {
+        padding: 0 45px;
+    }
+    .post-image img {
+        float: left;
+        width: 300px;
+        margin: 0 30px 20px -45px;
+        border: 10px solid #DDDDDF;
+        border-left-width: 0;
+    }
+}
+
+/*Post style*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+.container {
+    max-width: 960px;
+    margin: 50px auto;
+    padding: 0 15px;
+    background: white;
+}
+.post {
+    padding: 2em 0 1em;
+}
+.post-image img {
+    width: 100%;
+    margin: 0 0 20px 0;
+}
+.post h1 {
+    color: #222;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+.post-header {
+    text-align: center;
+}
+.post-meta {
+    margin-bottom: 30px;
+    display: inline-block;
+    position: relative;
+    text-transform: uppercase;
+    font-size: .8em;
+}
+.post-meta:before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: #222;
+}
+time,
+.author {
+    padding-right: 26px;
+    position: relative;
+}
+time:after,
+.author:after {
+    content: "/";
+    color: #DDDDDF;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+}
+.post p {
+    line-height: 1.5;
+    margin-bottom: 1em;
+    text-align: justify;
+}
+@media (min-width: 768px) {
+    .container {
+        padding: 0 45px;
+    }
+    .post-image img {
+        float: left;
+        width: 300px;
+        margin: 0 30px 20px -45px;
+        border: 10px solid #DDDDDF;
+        border-left-width: 0;
+    }
+}
+/*PEN STYLES*/
+* {
+    box-sizing: border-box;
+}
+
+
+.blog-card {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem auto;
+    box-shadow: 0 3px 7px -1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.6%;
+    background: #fff;
+    line-height: 1.4;
+    font-family: sans-serif;
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 0;
+}
+.blog-card a {
+    color: inherit;
+}
+.blog-card a:hover {
+    color: #000000;
+}
+.blog-card:hover .photo {
+    transform: scale(1.3) rotate(3deg);
+}
+.blog-card .meta {
+    position: relative;
+    z-index: 0;
+    height: 200px;
+}
+.blog-card .photo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.2s;
+}
+.blog-card .details,
+.blog-card .details ul {
+    margin: auto;
+    padding: 0;
+    list-style: none;
+}
+.blog-card .details {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -100%;
+    margin: auto;
+    transition: left 0.2s;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 10px;
+    width: 100%;
+    font-size: 0.9rem;
+}
+.blog-card .details a {
+    -webkit-text-decoration: dotted underline;
+    text-decoration: dotted underline;
+}
+.blog-card .details ul li {
+    display: inline-block;
+}
+.blog-card .details .author:before {
+    font-family: FontAwesome;
+    margin-right: 10px;
+    content: "";
+}
+.blog-card .details .date:before {
+    font-family: FontAwesome;
+    margin-right: 10px;
+    content: "";
+}
+.blog-card .details .tags ul:before {
+    font-family: FontAwesome;
+    content: "";
+    margin-right: 10px;
+}
+.blog-card .details .tags li {
+    margin-right: 2px;
+}
+.blog-card .details .tags li:first-child {
+    margin-left: -4px;
+}
+.blog-card .description {
+    padding: 1rem;
+    background: #fff;
+    position: relative;
+    z-index: 1;
+}
+.blog-card .description h1,
+.blog-card .description h2 {
+    font-family: Poppins, sans-serif;
+}
+.blog-card .description h1 {
+    line-height: 1;
+    margin: 0;
+    font-size: 1.7rem;
+}
+.blog-card .description h2 {
+    font-size: 1rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: #a2a2a2;
+    margin-top: 5px;
+}
+.blog-card .description .read-more {
+    text-align: right;
+}
+.blog-card .description .read-more a {
+    color: #062036;
+    display: inline-block;
+    position: relative;
+}
+.blog-card .description .read-more a:after {
+    content: "";
+    font-family: FontAwesome;
+    margin-left: -10px;
+    opacity: 0;
+    vertical-align: middle;
+    transition: margin 0.3s, opacity 0.3s;
+}
+.blog-card .description .read-more a:hover:after {
+    margin-left: 5px;
+    opacity: 1;
+}
+.blog-card p {
+    position: relative;
+    margin: 1rem 0 0;
+}
+.blog-card p:first-of-type {
+    margin-top: 1.25rem;
+}
+.blog-card p:first-of-type:before {
+    content: "";
+    position: absolute;
+    height: 5px;
+    background: #062036;
+    width: 35px;
+    top: -0.75rem;
+    border-radius: 3px;
+}
+.blog-card:hover .details {
+    left: 0%;
+}
+@media (min-width: 640px) {
+    .blog-card {
+        flex-direction: row;
+        max-width: 700px;
+    }
+    .blog-card .meta {
+        flex-basis: 40%;
+        height: auto;
+    }
+    .blog-card .description {
+        flex-basis: 60%;
+    }
+    .blog-card .description:before {
+        transform: skewX(-3deg);
+        content: "";
+        background: #fff;
+        width: 30px;
+        position: absolute;
+        left: -10px;
+        top: 0;
+        bottom: 0;
+        z-index: -1;
+    }
+    .blog-card.alt {
+        flex-direction: row-reverse;
+    }
+    .blog-card.alt .description:before {
+        left: inherit;
+        right: -10px;
+        transform: skew(3deg);
+    }
+    .blog-card.alt .details {
+        padding-left: 25px;
+    }
+}
+
+/*Login form*/
+.login,
+.signin {
+    background-color: #d3d3d3;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.login {
+    position: relative;
+    height: 560px;
+    width: 405px;
+    margin: auto;
+    padding: 60px 60px;
+    background: url(https://picsum.photos/id/1004/5616/3744) no-repeat   center center #505050;
+    background-size: cover;
+    box-shadow: 0px 30px 60px -5px #000;
+}
+.login form {
+    padding-top: 30px;
+}
+
+.active {
+    border-bottom: 2px solid #1161ed;
+}
+
+.nonactive {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.login h2 {
+    padding-left: 12px;
+    font-size: 22px;
+    text-transform: uppercase;
+    padding-bottom: 5px;
+    letter-spacing: 2px;
+    display: inline-block;
+    font-weight: 100;
+}
+
+.login h2:first-child {
+    padding-left: 0px;
+}
+.login span {
+    text-transform: uppercase;
+    font-size: 12px;
+    opacity: 0.4;
+    display: inline-block;
+    position: relative;
+    top: -65px;
+    transition: all 0.5s ease-in-out;
+}
+
+.text {
+    border: none;
+    width: 89%;
+    padding: 10px 20px;
+    display: block;
+    height: 15px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0);
+    overflow: hidden;
+    margin-top: 15px;
+    transition: all 0.5s ease-in-out;
+}
+
+.text:focus {
+    outline: 0;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0);
+}
+
+.text:focus + span {
+    opacity: 0.6;
+}
+
+.login input[type="text"],
+.login input[type="password"] {
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+}
+.login span {
+    text-transform: uppercase;
+    font-size: 12px;
+    opacity: 0.4;
+    display: inline-block;
+    position: relative;
+    top: -65px;
+    transition: all 0.5s ease-in-out;
+}
+
+.text {
+    border: none;
+    width: 89%;
+    padding: 10px 20px;
+    display: block;
+    height: 15px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0);
+    overflow: hidden;
+    margin-top: 15px;
+    transition: all 0.5s ease-in-out;
+}
+
+.text:focus {
+    outline: 0;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0);
+}
+
+.text:focus + span {
+    opacity: 0.6;
+}
+
+.login input {
+    display: inline-block;
+    padding-top: 20px;
+    font-size: 14px;
+}
+.login h2,
+.login span,
+.custom-checkbox {
+    margin-left: 20px;
+}
+
+.custom-checkbox {
+    -webkit-appearance: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 8px;
+    border-radius: 2px;
+    display: inline-block;
+    position: relative;
+    top: 6px;
+}
+
+.custom-checkbox:checked {
+    background-color: rgba(17, 97, 237, 1);
+}
+
+.custom-checkbox:checked:after {
+    content: '\2714';
+    font-size: 10px;
+    position: absolute;
+    top: 1px;
+    left: 4px;
+    color: #fff;
+}
+
+.custom-checkbox:focus {
+    outline: none;
+}
+
+.login label {
+    display: inline-block;
+    padding-top: 10px;
+    padding-left: 5px;
+}
+
+.signin {
+    background-color: #1161ed;
+    color: #FFF;
+    width: 100%;
+    padding: 10px 20px;
+    display: block;
+    height: 39px;
+    border-radius: 20px;
+    /*margin-top: 30px;*/
+    transition: all 0.5s ease-in-out;
+    border: none;
+    text-transform: uppercase;
+}
+
+.signin:hover {
+    background: #4082f5;
+    box-shadow: 0px 4px 35px -5px #4082f5;
+    cursor: pointer;
+}
+
+.signin:focus {
+    outline: none;
+}
+.login hr {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    top: 85px;
+    position: relative;
+}
+
+
 /* Extract from normalize.css by Nicolas Gallagher and Jonathan Neal git.io/normalize */
 html {
     -ms-text-size-adjust: 100%;

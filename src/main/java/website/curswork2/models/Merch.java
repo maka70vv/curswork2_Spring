@@ -27,18 +27,12 @@ public class Merch {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,
             mappedBy = "merch")
     private List<Image> images = new ArrayList<>();
-    private Long previewImageId;
-    private LocalDateTime dateOfCreated;
-
-
-    @PrePersist
-    private void init() {
-        dateOfCreated = LocalDateTime.now();
-    }
-
+    private Long ImageId;
 
     public void addImageToProduct(Image image) {
         image.setMerch(this);
         images.add(image);
     }
+
+
 }

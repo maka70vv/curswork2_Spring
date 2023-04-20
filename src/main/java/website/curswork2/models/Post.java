@@ -1,58 +1,49 @@
 package website.curswork2.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
+@Table(name = "posts")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
+    @Column(name = "title")
+    private String title;
+    @Column(name = "anons", columnDefinition = "text")
+    private String anons;
+    @Column(name = "full_text", columnDefinition = "text")
+    private String full_text;
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @JoinColumn
+    private User user;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,
+            mappedBy = "post")
+    private List<Image> images = new ArrayList<>();
+    private Long previewImageId;
 
-    private String title, anons, fullText;
-    private int views;
+    private LocalDate dateOfCreated;
 
 
-    public void setId(Long id) {
-        this.id = id;
+    @PrePersist
+    private void init() {
+        dateOfCreated = LocalDate.now();
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getTitle(){
-        return title;
-    }
-
-    public void setTitle(String title){
-        this.title = title;
-    }
-
-    public String getAnons(){
-        return anons;
-    }
-
-    public void setAnons(String anons){
-        this.anons = anons;
-    }
-
-    public String getFullText(){
-        return fullText;
-    }
-
-    public void setFullText(String fullText){
-        this.fullText = fullText;
-    }
-
-    public int getViews(){
-        return views;
-    }
-
-    public void setViews(int views){
-        this.views = views;
+    public void addImageToPost(Image image) {
+        image.setPost(this);
+        images.add(image);
     }
 
 }

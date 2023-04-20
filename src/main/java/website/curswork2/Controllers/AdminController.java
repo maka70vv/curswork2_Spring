@@ -1,6 +1,7 @@
 package website.curswork2.Controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,9 +17,9 @@ import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
+@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 public class AdminController {
     private final UserService userService;
-
     @GetMapping("/admin")
     public String admin(Model model){
         List<User> listUsers = userService.listAll();

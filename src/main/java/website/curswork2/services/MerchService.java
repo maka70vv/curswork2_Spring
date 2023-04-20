@@ -30,7 +30,7 @@ public class MerchService {
             merch.addImageToProduct(image);
         }
         Merch productFromDb = merchRepository.save(merch);
-        productFromDb.setPreviewImageId(productFromDb.getImages().get(0).getId());
+        productFromDb.setImageId(productFromDb.getImages().get(0).getId());
         merchRepository.save(merch);
     }
 

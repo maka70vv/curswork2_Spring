@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head th:insert="blocks/head :: head"></head>
 <body>
 
@@ -7,13 +7,25 @@
 <div th:insert="blocks/navbar :: navbar"></div>
 <br>
 <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
-  <form th:action="@{/login}" method="post">
-    <div><label> User Name : <input type="text" name="username"/> </label></div>
-    <div><label> Password: <input type="password" name="password"/> </label></div>
-    <div><input type="submit" value="Sign In"/></div>
-  </form>
-  <a href="/registration">Зарегистрироваться</a>
 
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+
+  <div class="login">
+    <a th:href="@{/login}"><h2 class="active"> sign in </h2></a>
+    <a th:href="@{/registration}"><h2 class="nonactive"> sign up </h2></a>
+    <form th:action="@{/login}" method="post">
+      <input type="text" class="text" name="username">
+      <span>email</span>
+      <br>
+      <br>
+      <input type="password" class="text" name="password">
+      <span>password</span>
+      <br>
+    <button class="signin">
+      Sign In
+    </button>
+    </form>
+  </div>
 </div>
 <!-- Footer -->
 <div th:insert="blocks/footer :: footer"></div>

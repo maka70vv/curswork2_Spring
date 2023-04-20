@@ -1,18 +1,68 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:insert="blocks/head :: head"></head>
+<head th:insert="blocks/head :: head">
+    <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css}">
+</head>
+
 <body>
 
 <!-- Navbar -->
 <div th:insert="blocks/navbar :: navbar"></div>
 <br>
-<div th:each="elements: ${posts}">
-    <h3 th:text="${elements.title}"></h3>
-    <p th:text="${elements.anons}"/>
-    <a th:href="'/posts/' + ${elements.id}">More</a>
+<br>
+<br>
+
+<div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
+    <h2 class="w3-wide w3-center">ADD POST</h2>
+    <div >
+        <form th:action="@{/forum/post/create}" method="post" enctype="multipart/form-data">
+            <div class="w3-row-padding" style="margin:0 -16px 8px -16px; width: 100%">
+                <div class="w3-half">
+                    <input class="w3-input w3-border" type="text" placeholder="Title" name="title">
+                </div>
+                <div class="w3-half">
+                    <input class="w3-input w3-border" type="text" placeholder="Small description" name="anons">
+                </div>
+            </div>
+            <input class="w3-input w3-border" type="text" placeholder="Full text" required name="full_text">
+            <br>
+            <div class="example-2">
+                <div class="form-group">
+                    <input type="file" name="file1" id="file" class="input-file">
+                    <label for="file" class="btn btn-tertiary js-labelFile">
+                        <i class="icon fa fa-check"></i>
+                        <span class="js-fileName">Add file</span>
+                    </label>
+                </div>
+            </div>
+            <button class="w3-button w3-black w3-section w3-right" type="submit">SEND</button>
+        </form>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="blog-card" th:each="p: ${posts}">
+        <div class="meta">
+            <div class="photo">
+                <img th:src="'/images/' + ${p.getPreviewImageId()}" width="200px"/>
+            </div>
+            <ul class="details">
+                <li class="author"><a href="#"><p th:text="${p.user.username}"></p></a></li>
+                <li class="date" th:text="${p.dateOfCreated}"></li>
+            </ul>
+        </div>
+        <div class="description">
+            <h1 th:text="${p.title}"></h1>
+            <p th:text="${p.anons}"></p>
+            <p class="read-more">
+                <a th:href="'/forum/post/'+${p.id}">Read More</a>
+            </p>
+        </div>
+    </div>
 </div>
+
 <!-- Footer -->
-<div th:insert="blocks/footer :: footer"></div>
+<div th:insert="blocks/footer :: footer" style="margin-top: 20%"></div>
 
 </body>
 </html>

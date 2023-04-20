@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:insert="blocks/head :: head"></head>
 <body>
 
@@ -12,50 +12,37 @@
     <!--Images -->
     <div class="mySlides w3-display-container w3-center">
         <img th:src="@{/img/img1.jpg}" style="width:100%">
-        <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
-            <div class="square" th:each="home: ${home}">
-                <span th:if="${home.id == 1}">
-                    <h3 th:text="${home.title}"></h3>
-                    <p><b th:text="${home.text}"></b></p>
-                </span>
+        <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small" th:each="home: ${home}" th:if="${home.id == 1}">
+            <div class="square">
+                <h3 th:text="${home.title}"></h3>
+                <p><b th:text="${home.text}"></b></p>
             </div>
         </div>
     </div>
     <div class="mySlides w3-display-container w3-center">
         <img th:src="@{/img/img2.jpg}" style="width:100%">
-        <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
-            <div class="square" th:each="home: ${home}">
-                <span th:if="${home.id == 2}">
-                    <h3 th:text="${home.title}"></h3>
-                    <p><b th:text="${home.text}"></b></p>
-                </span>
+        <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small" th:each="home: ${home}" th:if="${home.id == 1}">
+            <div class="square">
+                <h3 th:text="${home.title}"></h3>
+                <p><b th:text="${home.text}"></b></p>
             </div>
         </div>
     </div>
     <div class="mySlides w3-display-container w3-center">
         <img th:src="@{/img/img3.jpg}" style="width:100%">
-        <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
-            <div class="square" th:each="home: ${home}">
-                <span th:if="${home.id == 3}">
-                    <h3 th:text="${home.title}"></h3>
-                    <p><b th:text="${home.text}"></b></p>
-                </span>
+        <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small" th:each="home: ${home}" th:if="${home.id == 1}">
+            <div class="square">
+                <h3 th:text="${home.title}"></h3>
+                <p><b th:text="${home.text}"></b></p>
             </div>
         </div>
     </div>
 
     <!-- The Band Section -->
-    <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+    <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band" th:each="home: ${home}" th:if="${home.id == 2}">
         <h2 class="w3-wide">THE BAND</h2>
-        <p class="w3-opacity"><i>We love music</i></p>
-        <p class="w3-justify">We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip
-            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-            mollit anim id est laborum consectetur
-            adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p class="w3-opacity"><i th:text="${home.title}"></i></p>
+        <p class="w3-justify" th:text="${home.text}"></p>
         <div class="w3-row w3-padding-32">
             <div class="w3-third">
                 <p>Happy</p>
@@ -76,78 +63,63 @@
 
     <!-- The Tour Section -->
     <div class="w3-black" id="merchandise">
-        <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
+        <div class="w3-container w3-content w3-padding-64" style="max-width:800px" th:each="home: ${home}" th:if="${home.id == 3}">
             <h2 class="w3-wide w3-center">BUY MERCHANDISE</h2>
-            <p class="w3-opacity w3-center"><i>Remember to book your tickets!</i></p><br>
+            <p class="w3-opacity w3-center" th:text="${home.title}"><i></i></p><br>
 
-            <ul class="w3-ul w3-border w3-white w3-text-grey">
-                <li class="w3-padding">Hoodie <span class="w3-tag w3-red w3-margin-left">Sold out</span></li>
-                <li class="w3-padding">T-Shirt <span class="w3-tag w3-red w3-margin-left">Sold out</span></li>
-                <li class="w3-padding">Kepka <span class="w3-badge w3-right w3-margin-right">13</span></li>
-            </ul>
 
             <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
-                <div class="w3-third w3-margin-bottom">
-                    <img th:src="@{/img/tour.jpg}" alt="New York" style="width:100%" class="w3-hover-opacity">
-                    <div class="w3-container w3-white">
-                        <p><b>New York</b></p>
-                        <p class="w3-opacity">Fri 27 Nov 2016</p>
-                        <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                        <button onclick="window.location.href = '/merchandise';" class="w3-button w3-black w3-margin-bottom">Buy Merch
-                        </button>
+                <div class="w3-row-padding w3-padding-32 card" style="margin:0 -16px">
+                    <div class="w3-third w3-margin-bottom" th:each="m: ${merch}" th:if="${m.id == 15}">
+                        <img th:src="'/images/' + ${m.getImageId()}" style="width:250px" class="w3-hover-opacity"/>
+                        <div class="w3-container w3-white">
+                            <p><b th:text="${m.title}"></b></p>
+                            <p class="w3-opacity" th:text="${m.cost}+'$'"></p>
+                            <p th:text="${m.description}"></p>
+                            <button onclick="window.location.href = '/merchandise';" class="w3-button w3-black w3-margin-bottom">Buy Merch
+                            </button>
+                        </div>
                     </div>
-                </div>
-                <div class="w3-third w3-margin-bottom">
-                    <img th:src="@{/img/tour2.jpg}" alt="Paris" style="width:100%" class="w3-hover-opacity">
-                    <div class="w3-container w3-white">
-                        <p><b>Paris</b></p>
-                        <p class="w3-opacity">Sat 28 Nov 2016</p>
-                        <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                        <button onclick="window.location.href = '/merchandise';" class="w3-button w3-black w3-margin-bottom">Buy Merch
-                        </button>
+                    <div class="w3-third w3-margin-bottom" th:each="m: ${merch}" th:if="${m.id == 17}">
+                        <img th:src="'/images/' + ${m.getImageId()}" style="width:250px" class="w3-hover-opacity"/>
+                        <div class="w3-container w3-white">
+                            <p><b th:text="${m.title}"></b></p>
+                            <p class="w3-opacity" th:text="${m.cost}+'$'"></p>
+                            <p th:text="${m.description}"></p>
+                            <button onclick="window.location.href = '/merchandise';" class="w3-button w3-black w3-margin-bottom">Buy Merch
+                            </button>
+                        </div>
                     </div>
-                </div>
-                <div class="w3-third w3-margin-bottom">
-                    <img th:src="@{/img/tour3.jpeg}" alt="San Francisco" style="width:100%" class="w3-hover-opacity">
-                    <div class="w3-container w3-white">
-                        <p><b>San Francisco</b></p>
-                        <p class="w3-opacity">Sun 29 Nov 2016</p>
-                        <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                        <button onclick="window.location.href = '/merchandise';" class="w3-button w3-black w3-margin-bottom">Buy Merch
-                        </button>
+                    <div class="w3-third w3-margin-bottom" th:each="m: ${merch}" th:if="${m.id == 19}">
+                        <img th:src="'/images/' + ${m.getImageId()}" style="width:250px" class="w3-hover-opacity"/>
+                        <div class="w3-container w3-white">
+                            <p><b th:text="${m.title}"></b></p>
+                            <p class="w3-opacity" th:text="${m.cost}+'$'"></p>
+                            <p th:text="${m.description}"></p>
+                            <button onclick="window.location.href = '/merchandise';" class="w3-button w3-black w3-margin-bottom">Buy Merch
+                            </button>
+                        </div>
                     </div>
-                </div>
             </div>
         </div>
     </div>
+    </div>
 
-    <!-- The Contact Section -->
-    <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
-        <h2 class="w3-wide w3-center">CONTACT</h2>
-        <p class="w3-opacity w3-center"><i>For cooperation</i></p>
-        <div class="w3-row w3-padding-32">
-            <div class="w3-col m6 w3-large w3-margin-bottom">
-                <i class="fa fa-map-marker" style="width:30px"></i> Chicago, US<br>
-                <i class="fa fa-phone" style="width:30px"></i> Phone: 8-(800)-555-35-35<br>
-                <i class="fa fa-envelope" style="width:30px"> </i> Email: mail@mail.com<br>
-            </div>
+<!--     Add element -->
+    <div class="w3-container w3-content w3-padding-64" style="max-width:800px" sec:authorize="hasRole('ROLE_ADMIN')">
+        <h2 class="w3-wide w3-center">ADD ELEMENT OF THE INDEX PAGE</h2>
             <div class="w3-col m6">
-                <form action="/action_page.php" target="_blank">
+                <form th:action="@{/elem/create}" target="_blank" method="post">
                     <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
                         <div class="w3-half">
-                            <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
-                        </div>
-                        <div class="w3-half">
-                            <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
+                            <input class="w3-input w3-border" type="text" placeholder="Title" name="title">
                         </div>
                     </div>
-                    <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
-                    <button class="w3-button w3-black w3-section w3-right" type="submit">SEND</button>
+                    <input class="w3-input w3-border" type="text" placeholder="Text" name="text">
+                    <button class="w3-button w3-black w3-section w3-right" type="submit">ADD</button>
                 </form>
             </div>
         </div>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d4934.850088665592!2d-63.98887019970501!3d-33.8675911037732!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzPCsDUyJzA0LjQiUyA2M8KwNTknMTMuMiJX!5e1!3m2!1sru!2skg!4v1677679332263!5m2!1sru!2skg" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
     </div>
 
     <!-- End Page Content -->
@@ -158,21 +130,21 @@
 <!-- Footer -->
 <div th:insert="blocks/footer :: footer"></div>
 <script>
-// Automatic Slideshow - change image every 4 seconds
-var myIndex = 0;
-carousel();
+    // Automatic Slideshow - change image every 4 seconds
+    var myIndex = 0;
+    carousel();
 
-function carousel() {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  myIndex++;
-  if (myIndex > x.length) {myIndex = 1}
-  x[myIndex-1].style.display = "block";
-  setTimeout(carousel, 4000);
-}
+    function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        myIndex++;
+        if (myIndex > x.length) {myIndex = 1}
+        x[myIndex-1].style.display = "block";
+        setTimeout(carousel, 4000);
+    }
 </script>
 </body>
 </html>
