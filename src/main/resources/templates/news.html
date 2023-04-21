@@ -1,29 +1,48 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:insert="blocks/head :: head"></head>
 <body>
 
 <!-- Navbar -->
 <div th:insert="blocks/navbar :: navbar"></div>
 <br>
-<div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
-    <h2 class="w3-wide">NEWS</h2>
-    <div class="w3-row w3-padding-32">
-            <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
-                <div class="newsContainer">
-                    <img src="../static/img/news1.jpg" alt="New York" style="width:100%" class="w3-hover-opacity">
-                    <div class="w3-container w3-white">
-                        <p class="w3-opacity">18 Jan 2023</p>
-                        <b>PASHA TECHNIC GOT IN TOUCH FROM REHAB</b>
-                        <p class="w3-opacity">"I'm fine. I'm going through a rehabilitation course. I won't be back soon," - Technician wrote on social networks.</p>
-                        <button class="w3-button w3-black w3-margin-bottom">More info...
-                        </button>
-                    </div>
+<div class="news" style="max-width:800px">
+    <div class="fond"><span class="s1">Pasha</span><span class="s2">Technik</span></div>
+    <div class="card" style="margin-left: 50%"  th:each="n:${news}">
+        <div class="thumbnail"><img class="left"
+                                    th:src="'/images/' + ${n.getImageId()}"/>
+        </div>
+        <div class="right">
+            <h1 th:text="${n.title}"></h1>
+            <div class="separator"></div>
+            <p th:text="${n.description}"></p>
+        </div>
+        <div class="fab"><i class="fa fa-arrow-down fa-3x"></i></div>
+    </div>
+</div>
+<!--     Add element -->
+<div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" sec:authorize="hasRole('ROLE_ADMIN')">
+        <h2 class="w3-wide w3-center">ADD NEWS</h2>
+        <form th:action="@{/news/create}" method="post" enctype="multipart/form-data">
+            <div class="w3-row-padding" style="margin:0 -16px 8px -16px; width: 100%">
+                <div class="w3-half">
+                    <input class="w3-input w3-border" type="text" placeholder="Title" name="title">
                 </div>
             </div>
-        </div>
+            <input class="w3-input w3-border" type="text" placeholder="Description" required name="description">
+            <br>
+            <div class="example-2">
+                <div class="form-group">
+                    <input type="file" name="file1" id="file" class="input-file">
+                    <label for="file" class="btn btn-tertiary js-labelFile">
+                        <i class="icon fa fa-check"></i>
+                        <span class="js-fileName">Add file</span>
+                    </label>
+                    <button class="w3-button w3-black w3-section w3-right" type="submit">SEND</button>
+                </div>
+            </div>
+        </form>
     </div>
-
 
 <!-- Footer -->
 <div th:insert="blocks/footer :: footer"></div>
