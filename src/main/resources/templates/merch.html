@@ -10,8 +10,8 @@
 <div class="w3-black">
 
     <div class="actionsBar">
-        <form class="search" action="action_page.php">
-            <input type="text" name="search" placeholder="Search..">
+        <form class="search" th:action="@{/merchandise}" method="get">
+            <input type="text" name="title" placeholder="Search..">
             <button type="submit"><i class="fa fa-search"></i></button>
         </form>
         <a class="w3-hover-opacity" href="/cart"><img th:src="@{img/cart.png}"></a>
@@ -53,7 +53,10 @@
                     <p><b th:text="${m.title}"></b></p>
                     <p class="w3-opacity" th:text="${m.cost}+'$'"></p>
                     <p th:text="${m.description}"></p>
-
+                    <a class="w3-button w3-black w3-margin-bottom" sec:authorize="hasRole('ROLE_ADMIN')" th:href="'/merchandise/'+${m.id}+'/edit/'">Edit</a>
+                    <form sec:authorize="hasRole('ROLE_ADMIN')" th:action="'/merchandise/delete/' + ${m.id}" method="post">
+                        <button class="w3-button w3-black w3-section w3-right" type="submit">DELETE</button>
+                    </form>
                     <button onclick="document.getElementById('buyModal').style.display='block';"
                             class="w3-button w3-black w3-margin-bottom">Buy Merch
                     </button>
@@ -70,7 +73,7 @@
                     <input class="w3-input w3-border" type="text" placeholder="Title" name="title">
                 </div>
                 <div class="w3-half">
-                    <input class="w3-input w3-border" type="text" placeholder="Price" name="cost">
+                    <input class="w3-input w3-border" type="number" placeholder="Price" name="cost">
                 </div>
             </div>
             <input class="w3-input w3-border" type="text" placeholder="Description" required name="description">

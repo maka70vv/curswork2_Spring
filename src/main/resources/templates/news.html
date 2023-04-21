@@ -16,6 +16,10 @@
             <h1 th:text="${n.title}"></h1>
             <div class="separator"></div>
             <p th:text="${n.description}"></p>
+            <a class="w3-button w3-black w3-margin-bottom" sec:authorize="hasRole('ROLE_ADMIN')" th:href="'/news/'+${n.id}+'/edit/'">Edit</a>
+            <form sec:authorize="hasRole('ROLE_ADMIN')" th:action="'/news/delete/' + ${n.id}" method="post">
+                <button class="w3-button w3-black w3-section w3-right" type="submit">DELETE</button>
+            </form>
         </div>
         <div class="fab"><i class="fa fa-arrow-down fa-3x"></i></div>
     </div>

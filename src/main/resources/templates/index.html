@@ -16,6 +16,7 @@
             <div class="square">
                 <h3 th:text="${home.title}"></h3>
                 <p><b th:text="${home.text}"></b></p>
+                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="'/elem/'+${home.id}+'/edit/'">Edit element</a>
             </div>
         </div>
     </div>
@@ -25,6 +26,7 @@
             <div class="square">
                 <h3 th:text="${home.title}"></h3>
                 <p><b th:text="${home.text}"></b></p>
+                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="'/elem/'+${home.id}+'/edit/'">Edit element</a>
             </div>
         </div>
     </div>
@@ -34,6 +36,7 @@
             <div class="square">
                 <h3 th:text="${home.title}"></h3>
                 <p><b th:text="${home.text}"></b></p>
+                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="'/elem/'+${home.id}+'/edit/'">Edit element</a>
             </div>
         </div>
     </div>
@@ -43,6 +46,7 @@
         <h2 class="w3-wide">THE BAND</h2>
         <p class="w3-opacity"><i th:text="${home.title}"></i></p>
         <p class="w3-justify" th:text="${home.text}"></p>
+        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="'/elem/'+${home.id}+'/edit/'">Edit element</a>
         <div class="w3-row w3-padding-32">
             <div class="w3-third">
                 <p>Happy</p>
@@ -65,7 +69,9 @@
     <div class="w3-black" id="merchandise">
         <div class="w3-container w3-content w3-padding-64" style="max-width:800px" th:each="home: ${home}" th:if="${home.id == 3}">
             <h2 class="w3-wide w3-center">BUY MERCHANDISE</h2>
-            <p class="w3-opacity w3-center" th:text="${home.title}"><i></i></p><br>
+            <p class="w3-opacity w3-center" th:text="${home.title}"><i></i></p>
+            <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="'/elem/'+${home.id}+'/edit/'">Edit element</a>
+            <br>
 
 
             <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
