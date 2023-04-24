@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:insert="blocks/head :: head"></head>
+<body>
+
+<!-- Navbar -->
+<div th:insert="blocks/navbar :: navbar"></div>
+<br>
+<div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px">
+    <h2 class="w3-wide">PROFILE</h2>
+    <h1 th:inline="text">Hello <span th:remove="tag" sec:authentication="name">thymeleaf</span>!</h1>
+    <form th:action="@{/logout}" method="post">
+        <button class="w3-button w3-black w3-section" type="submit">SIGN OUT</button>
+    </form>
+    <h2 class="w3-wide">YOUR POSTS</h2>
+    <div th:each="p: ${posts}">
+        <div class="blog-card">
+            <div class="meta">
+                <div class="photo">
+                    <img th:src="'/images/' + ${p.getPreviewImageId()}" width="200px"/>
+                </div>
+                <ul class="details">
+                    <li class="author"><a href="#"><p th:text="${p.user.username}"></p></a></li>
+                    <li class="date" th:text="${p.dateOfCreated}"></li>
+                </ul>
+            </div>
+            <div class="description">
+                <h1 th:text="${p.title}"></h1>
+                <p th:text="${p.anons}"></p>
+                <p class="read-more">
+                    <a th:href="'/forum/post/'+${p.id}">Read More</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<!-- Footer -->
+<div th:insert="blocks/footer :: footer"></div>
+
+</body>
+</html>
