@@ -29,6 +29,33 @@
         </tr>
         </tbody>
     </table>
+    <h3 class="w3-wide w3-center">Orders</h3>
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+        <tr>
+            <th>Order ID</th>
+            <th>Product name</th>
+            <th>Customer name</th>
+            <th>Phone number</th>
+            <th>Address</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="o: ${order}">
+            <td th:text="${o.id}">Order ID</td>
+            <td th:text="${o.title}">Product name</td>
+            <td th:text="${o.name}">Customer name</td>
+            <td th:text="${o.phoneNumber}">Phone number</td>
+            <td th:text="${o.address}">Address</td>
+            <td>
+                <form th:action="'/admin/order/delete/' + ${o.id}" method="post">
+                    <button class="w3-button w3-black w3-section w3-right" type="submit">DELETE</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 <!-- Footer -->

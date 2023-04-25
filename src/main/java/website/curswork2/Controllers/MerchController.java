@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import website.curswork2.models.Home;
 import website.curswork2.models.Merch;
+import website.curswork2.models.Order;
 import website.curswork2.repositories.MerchRepository;
 import website.curswork2.services.MerchService;
+import website.curswork2.services.OrderService;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,7 +24,11 @@ import java.util.Optional;
 @Controller
 @RequiredArgsConstructor
 public class MerchController {
-    private final MerchService merchService;
+    @Autowired
+    private MerchService merchService;
+
+    @Autowired
+    private OrderService orderService;
 
     @Autowired
     private MerchRepository merchRepository;
@@ -36,9 +42,14 @@ public class MerchController {
 
     @GetMapping("/merchandise/{id}")
     public String productInfo(@PathVariable Long id, Model model) {
-        Merch product = merchService.getProductById(id);
-        model.addAttribute("product", product);
-        return "merch-info";
+        model.addAttribute("merches", merchService.getProductById(id));
+        return "buy-modal";
+    }
+
+    @PostMapping("/merchandise/{id}/order/save")
+    public String addOrder(Order order) {
+        orderService.saveOrder(order);
+        return "redirect:/merchandise/{id}";
     }
 
     @PostMapping("/merchandise/create")

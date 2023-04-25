@@ -14,33 +14,32 @@
             <input type="text" name="title" placeholder="Search..">
             <button type="submit"><i class="fa fa-search"></i></button>
         </form>
-        <a class="w3-hover-opacity" href="/cart"><img th:src="@{img/cart.png}"></a>
     </div>
     <!-- Buy Modal -->
-    <div id="buyModal" class="w3-modal">
-        <div class="w3-modal-content w3-animate-top w3-card-4">
-            <header class="w3-container w3-teal w3-center w3-padding-32">
-        <span onclick="document.getElementById('buyModal').style.display='none'"
-              class="w3-button w3-teal w3-xlarge w3-display-topright">×</span>
-                <h2 class="w3-wide"><i class="fa fa-suitcase w3-margin-right"></i>Market</h2>
-            </header>
-            <div class="w3-container">
-                <p><label><i class="fa fa-shopping-cart"></i>Product Type</label></p>
-                <input class="w3-input w3-border" type="text" placeholder="Which product?">
-                <p><label><i class="fa fa-user"></i>Quantity</label></p>
-                <input class="w3-input w3-border" type="text" placeholder="How many?">
-                <p><label><i class="fa fa-user"></i>Name</label></p>
-                <input class="w3-input w3-border" type="text" placeholder="Your name:">
-                <p><label><i class="fa fa-user"></i>Phone number</label></p>
-                <input class="w3-input w3-border" type="text" placeholder="Phone number:">
-                <p><label><i class="fa fa-user"></i>Address</label></p>
-                <input class="w3-input w3-border" type="text" placeholder="Address:">
-                <button onclick="document.getElementById('paidModal').style.display='block'" ;
-                        class="w3-button w3-block w3-teal w3-padding-16 w3-section w3-right">PAY <i
-                        class="fa fa-check"></i></button>
-            </div>
-        </div>
-    </div>
+<!--    <div id="buyModal" class="w3-modal">-->
+<!--        <div class="w3-modal-content w3-animate-top w3-card-4">-->
+<!--            <header class="w3-container w3-teal w3-center w3-padding-32">-->
+<!--        <span onclick="document.getElementById('buyModal').style.display='none'"-->
+<!--              class="w3-button w3-teal w3-xlarge w3-display-topright">×</span>-->
+<!--                <h2 class="w3-wide"><i class="fa fa-suitcase w3-margin-right"></i>Market</h2>-->
+<!--            </header>-->
+<!--            <div class="w3-container" th:each="m: ${merch}">-->
+<!--                <p><label><i class="fa fa-shopping-cart"></i>Product Type</label></p>-->
+<!--                <input class="w3-input w3-border" type="text" th:value="${m.title}" placeholder="Which product?">-->
+<!--                <p><label><i class="fa fa-user"></i>Quantity</label></p>-->
+<!--                <input class="w3-input w3-border" type="text" placeholder="How many?">-->
+<!--                <p><label><i class="fa fa-user"></i>Name</label></p>-->
+<!--                <input class="w3-input w3-border" type="text" placeholder="Your name:">-->
+<!--                <p><label><i class="fa fa-user"></i>Phone number</label></p>-->
+<!--                <input class="w3-input w3-border" type="text" placeholder="Phone number:">-->
+<!--                <p><label><i class="fa fa-user"></i>Address</label></p>-->
+<!--                <input class="w3-input w3-border" type="text" placeholder="Address:">-->
+<!--                <button onclick="document.getElementById('paidModal').style.display='block'" ;-->
+<!--                        class="w3-button w3-block w3-teal w3-padding-16 w3-section w3-right">PAY <i-->
+<!--                        class="fa fa-check"></i></button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 
     <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
         <h2 class="w3-wide w3-center">MERCHANDISE</h2>
@@ -57,11 +56,9 @@
                     <form sec:authorize="hasRole('ROLE_ADMIN')" th:action="'/merchandise/delete/' + ${m.id}" method="post">
                         <button class="w3-button w3-black w3-section w3-right" type="submit">DELETE</button>
                     </form>
-                    <button onclick="document.getElementById('buyModal').style.display='block';"
+                    <a th:href="'/merchandise/'+${m.id}"
                             class="w3-button w3-black w3-margin-bottom">Buy Merch
-                    </button>
-                    <a href="#" class="w3-hover-opacity" style="float: right"><img th:src="@{img/cartButton.png}"
-                                                                                   style="width: 70%"></a>
+                    </a>
 
                 </div>
             </div>
