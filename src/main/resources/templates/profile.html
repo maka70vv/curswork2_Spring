@@ -30,6 +30,9 @@
                 <p class="read-more">
                     <a th:href="'/forum/post/'+${p.id}">Read More</a>
                 </p>
+                <form th:action="'/forum/post/delete/'+${p.id}" method="post">
+                    <button class="w3-button w3-black w3-section w3-right" type="submit">delete</button>
+                </form>
             </div>
         </div>
     </div>

@@ -25,7 +25,7 @@ public class ForumService {
     private final ForumRepository forumRepository;
     private final UserRepository userRepository;
     private final CommentRepository commentRepository;
-
+//Списька из многа постов и оно по имени найти можно
     public List<Post> postList(String title) {
         if (title != null) return forumRepository.findByTitle(title);
         return forumRepository.findAll();

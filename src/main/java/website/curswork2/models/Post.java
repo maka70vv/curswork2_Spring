@@ -15,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Post {
+//    Это чтобы столбики баща данных туда сувайт
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -25,9 +26,11 @@ public class Post {
     private String anons;
     @Column(name = "full_text", columnDefinition = "text")
     private String full_text;
+//    Это много постов одному пользователю привязать на сепь
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
     @JoinColumn
     private User user;
+//    Это штобы одному потсу много картника давайт
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,
             mappedBy = "post")
     private List<Image> images = new ArrayList<>();
@@ -40,7 +43,7 @@ public class Post {
     private void init() {
         dateOfCreated = LocalDate.now();
     }
-
+//Это штобы добавления изображенийи джелайт
     public void addImageToPost(Image image) {
         image.setPost(this);
         images.add(image);
